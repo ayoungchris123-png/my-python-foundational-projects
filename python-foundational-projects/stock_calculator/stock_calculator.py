@@ -5,24 +5,39 @@
 
 stocks = {'TSLA': 912.86, 'BBBY': 24.84, 'AAPL': 174.26, 'SOFI': 6.92, 'KIRK': 8.72, 'AURA': 22.12, 'AMZN': 141.28, 'EMBK': 12.29, 'LVLU': 2.33}
 
-
+'''
 print("Enter a quantity of stocks followed by stock symbol(s): TSLA, BBBY, AAPL, SOFI, KIRK, AURA, AMZN, EMBK, LVLU")
 num_items = int(input())
 stc_list = []
 total = 0.0
+exit = 0
+'''
+exit = 0
+
+while exit != 1:
+    try:
+        print("Enter a quantity of stocks followed by stock symbol(s): TSLA, BBBY, AAPL, SOFI, KIRK, AURA, AMZN, EMBK, LVLU")
+        num_items = int(input())
+        stc_list = []
+        total = 0.0
+
+        for i in range(num_items):
+            item = input()
+            stc_list.append(item)
 
 
-for i in range(num_items):
-    item = input()
-    stc_list.append(item)
+        for symbol in stc_list:
+            if symbol in stocks:
+                total += stocks[symbol]
 
 
-for symbol in stc_list:
-    if symbol in stocks:
-        total += stocks[symbol]
+        print(f"Total price: ${total:.2f}")
 
+        exit = int(input('Enter 1 if you are finished or any other key to enter a new response: '))
+    except:
+        print('Invalid entry.')
+        exit = int(input('Enter 1 if you are finished or any other key to enter a new response: '))
 
-print(f"Total price: ${total:.2f}")
 
 
 
